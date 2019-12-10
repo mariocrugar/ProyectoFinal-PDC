@@ -5,7 +5,6 @@
 
 import psycopg2
 import psycopg2.extras
-import psycopg2.extensions
 
 import sys
 from datetime import timedelta
@@ -20,13 +19,8 @@ from pathlib import Path
 
 @click.group()
 @click.pass_context
-def XxXxXx(ctx):
-    """  Create the conection to the XxXxXx database in postgres using the
-    given default configuration.
-    :param module ctx: subclass of the dict object.
-    :return: 
-    :rtype:
-    """ 
+def realsuk(ctx):
+
     ctx.ensure_object(dict)
     conn = psycopg2.connect(settings.get('PGCONNSTRING'))
     conn.autocommit = True
@@ -41,44 +35,32 @@ def XxXxXx(ctx):
     ctx.obj['queries'] = queries
 
 
-@XxXxXx.command()
+@realsuk.command()
 @click.pass_context
 def create_schemas(ctx):
-    """  Execute the SQL commands to create the schemas raw, cleaned,
-    semantic and features. 
-    :param module ctx: subclass of the dict object.
-    :return: 
-    :rtype:
-    """ 
+    
     query = ctx.obj['queries'].get('create_schemas')
     print(query)
+    
+    
     conn = ctx.obj['conn']
     with conn.cursor() as cur:
         cur.execute(query)
 
-@XxXxXx.command()
+@realsuk.command()
 @click.pass_context
 def create_raw_tables(ctx):
-    """  Execute the SQL commands to create tables in the raw schema.
-    :param module ctx: subclass of the dict object.
-    :return: 
-    :rty
-    """
+
     query = ctx.obj['queries'].get('create_raw_tables')
     print(query)
     conn = ctx.obj['conn']
     with conn.cursor() as cur:
         cur.execute(query)
 
-
-@XxXxXx.command()
+@realsuk.command()
 @click.pass_context
-def load_XxXxXx(ctx):
-    """  Execute the SQL commands to load the XxXxXx data in the raw schema.
-    :param module ctx: subclass of the dict object.
-    :return: 
-    :rty
-    """
+def load_realsuk(ctx):
+
     conn = ctx.obj['conn']
     with conn.cursor() as cursor:
         for data_file in Path(settings.get('XxXxXxDIR')).glob('*.csv'):
@@ -94,14 +76,9 @@ def load_XxXxXx(ctx):
             cursor.copy_expert(sql_statement, file=buffer)
 
 
-@XxXxXx.command()
+@realsuk.command()
 @click.pass_context
 def to_cleaned(ctx):
-    """  Execute the SQL commands to pass tables from raw schema to cleaned schema.
-    :param module ctx: subclass of the dict object.
-    :return: 
-    :rty
-    """
     query = ctx.obj['queries'].get('to_cleaned')
     print(query)
     conn = ctx.obj['conn']
@@ -109,14 +86,9 @@ def to_cleaned(ctx):
         cur.execute(query)
 
 
-@XxXxXx.command()
+@realsuk.command()
 @click.pass_context
 def to_semantic(ctx):
-    """  Execute the SQL commands to pass tables from cleaned schema to semantic schema.
-    :param module ctx: subclass of the dict object.
-    :return: 
-    :rty
-    """
     query = ctx.obj['queries'].get('to_semantic')
     print(query)
     conn = ctx.obj['conn']
@@ -124,14 +96,9 @@ def to_semantic(ctx):
         cur.execute(query)
 
 
-@XxXxXx.command()
+@realsuk.command()
 @click.pass_context
 def create_cohorts(ctx):
-    """  Execute the SQL commands to create the cohort tables from tables in the semantic schema.
-    :param module ctx: subclass of the dict object.
-    :return: 
-    :rty
-    """
     query = ctx.obj['queries'].get('create_cohorts')
     print(query)
     conn = ctx.obj['conn']
@@ -139,14 +106,9 @@ def create_cohorts(ctx):
         cur.execute(query)
 
 
-@XxXxXx.command()
+@realsuk.command()
 @click.pass_context
 def create_labels(ctx):
-    """  Execute the SQL commands to create tables in the labels schema.
-    :param module ctx: subclass of the dict object.
-    :return: 
-    :rty
-    """
     query = ctx.obj['queries'].get('create_labels')
     print(query)
     conn = ctx.obj['conn']
@@ -154,14 +116,9 @@ def create_labels(ctx):
         cur.execute(query)
 
 
-@XxXxXx.command()
+@realsuk.command()
 @click.pass_context
 def create_features(ctx):
-    """  Execute the SQL commands to create tables of new features. 
-    :param module ctx: subclass of the dict object.
-    :return: 
-    :rty
-    """
     query = ctx.obj['queries'].get('create_features')
     print(query)
     conn = ctx.obj['conn']
@@ -170,4 +127,4 @@ def create_features(ctx):
 
 
 if __name__ == '__main__':
-    XxXxXx()
+    realsuk()
