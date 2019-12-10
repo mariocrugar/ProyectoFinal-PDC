@@ -1,0 +1,163 @@
+---
+title: "EDA Real State UK"
+author: "Equipo"
+date: "10/12/2019"
+output: html_document
+---
+
+## Análisis exploratorio de datos de real state UK
+
+
+#### Librerías
+
+```{r warning=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(gridExtra)
+library(grid)
+```
+
+Lectura de la base de datos de real state de UK.
+
+```{r warning=FALSE}
+realsuk <- read.csv("pp-2019-part1.csv", header = TRUE, sep = ",")
+```
+
+Conversión de los datos a formato *tibble*.
+
+```{r warning=FALSE}
+realsuk <- as_tibble(realsuk)
+```
+
+Primeras observaciones de la base de datos.
+
+```{r warning=FALSE}
+head(realsuk)
+```
+
+Resumen de los datos de Real state.
+
+```{r warning=FALSE}
+glimpse(realsuk)
+```
+
+```{r warning=FALSE}
+
+```
+
+Dispersión de los datos por precio de las viviendas
+
+```{r warning=FALSE}
+ggplot(realsuk, aes(x = date_of_transfer, y = price)) + 
+  geom_point()
+```
+
+En las siguientes gráficas se muestra la dispersión del precio por cada una de las varibles categóricas que tiene 
+la base de datos. 
+
+Se pueden observar datos atípicos enen los precios. Estos datos modifican la visualización de los datos, posteriormente se tratarán.
+
+```{r warning=FALSE}
+box_1 <- ggplot(data = realsuk, mapping = aes(x = old_new , y = price)) +
+  geom_boxplot()
+
+box_2 <- ggplot(data = realsuk, mapping = aes(x = duration  , y = price)) +
+  geom_boxplot()
+
+box_3 <- ggplot(data = realsuk, mapping = aes(x = proper_type  , y = price)) +
+  geom_boxplot()
+
+grid.arrange(box_1, box_2, box_3, ncol = 3)
+```
+
+En la gráfica de inmuebles antiguos contra nuevos, se puede notar que hay una mayor dispersión en términos de precios.
+
+En cuanto a la duración presentan simulitud en la dispersión del precio de la vivienda.
+
+Finalmente, se observa que la variable *O* tiene mayor dispersión que las demás variables.
+
+
+Pasando al histograma de los precios para conocer la distribución de estos, se puede apreciar una desviación que no
+permite la correcta visualización de los datos. Esto se debe a la existencia de datos atípicos que arrastran la 
+distribución. 
+
+```{r warning=FALSE}
+hist(realsuk$price, col = "lightseagreen", main = "Distribución de precios")
+```
+
+
+Para observar mejor este fenómeno se realizó un box plot y un histograma distinto que nos permite apreciar los datos
+pequeños que no se pueden notar en la vista pasada.
+```{r warning=FALSE}
+
+ggplot() + geom_histogram(mapping = aes(realsuk$price), bins = 1000, fill = "lightseagreen")
+
+boxplot(realsuk$price, main = "precio", boxwex = 0.5, col = "salmon") # Boxplot de los precios
+
+boxplot(realsuk, main = "precio", boxwex = 0.5, col = "salmon") # Boxplot de todas las variables
+
+```
+
+A continuación, se identificarán y retirarán los outliers que alteran la información. 
+
+
+```{r warning=FALSE}
+outliers <- boxplot(realsuk$price, plot = FALSE)$out   # Identificación de los outliers dentro de la variable precio
+precios_rs <- realsuk[-which(realsuk$price %in% outliers),] # Eliminación de las observaciones con outliers
+boxplot(precios_rs)
+boxplot(precios_rs$price)
+
+```
+
+En la gráfica de boxplot se aprecia mejor la indformación y distribución tanto para todas las variables como para los precios.
+
+Finalmente, se realizan los histogramas para conocer la distribución del precio. 
+
+```{r warning=FALSE}
+hist(precios_rs$price, col = "lightseagreen", main = "Distribución de precios")
+```
+
+```{r warning=FALSE}
+qplot(precios_rs$price, geom="histogram", fill = "salmon")
+
+```
+
+A contunuación, se realizará un análisis para conocer la situación de las variables categóricas de la base de datos
+se realizarán gráficas para comparar referencias absolutas entre dichas variables.
+
+
+```{r warning=FALSE}
+barplot(table(precios_rs$old_new), col = c("salmon", "lightseagreen"),
+        main = "Frecuencias absolutas\n de la variable \"old_new\"")
+```
+
+```{r warning=FALSE}
+barplot(table(precios_rs$duration), col = c("salmon", "lightseagreen"),
+        main = "Frecuencias absolutas\n de la variable \"duration\"")
+```
+
+```{r warning=FALSE}
+barplot(table(precios_rs$proper_type), col = c("salmon", "lightseagreen", "olivedrab2", "lightslateblue", "aquamarine1"),
+        main = "Frecuencias absolutas\n de la variable \"proper type\"")
+```
+
+```{r warning=FALSE}
+barplot(table(precios_rs$county), col = c("salmon", "lightseagreen"),
+        main = "Frecuencias absolutas\n de la variable \"county\"")
+
+```
+
+```{r warning=FALSE}
+
+
+```
+
+```{r warning=FALSE}
+
+
+```
+
+```{r warning=FALSE}
+
+
+```
