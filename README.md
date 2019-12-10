@@ -33,6 +33,8 @@ Esta base de datos tiene información de **YYYYYYYY**
 |PPD|Indica el tipo de precio pagaso en la transacción|
 |Record/status|Movimientos en los registros |
 
+Hola :)
+
 
 
 
