@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "Proyecto_Final"
 version = "1.0.0"
-description = ""
+description = "python environment for real state in the United Kingdom"
 license = "GPL3.0+"
 authors = ["Victor Guardado, Mario Alberto Cruz, Mario Rodriguez"]
 include = [
