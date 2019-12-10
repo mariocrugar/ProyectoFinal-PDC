@@ -35,7 +35,7 @@ Esta base de datos tiene información de **YYYYYYYY**
 
 Hola :)
 
-
+![Texto alternativo](docs/boxplot_vars.png)
 
 
 
