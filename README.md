@@ -30,7 +30,11 @@ El presente proyecto tiene como objetivo el poner en práctica los conocimientos
 
 La base de datos que se eligió es la de **Information about price paid data** del gobierno británico. Dentro del compilado
 de **Land Registration (UK)**. 
-Esta base de datos tiene información de **YYYYYYYY**
+Esta base de datos tiene información de los precios pagados por propiedades en venta en Inglaterra y Gales. Los datos utilizados para el presente proyectos son los correspondientes a lo que va del 2019.
+
+Fuente: https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads
+
+Tiene un total de 15 variables y 103,483 observaciones.
 
 ### Explicación de los encabezados en las columnas
 
