@@ -5,9 +5,9 @@ Repositorio para el proyecto final de la materia **Programación para ciencia de
 
 ## Integrantes 
 
-+ Mario Alberto 
-+ Mario Alberto Cruz García
-+ Victor Guardado
++ Mario Alberto Rodríguez Arias 164471
++ Mario Alberto Cruz García 123808
++ Victor Guardado 13
 
 
 ## Objetivo del Proyecto 
@@ -34,24 +34,24 @@ Esta base de datos tiene información de **YYYYYYYY**
 
 ### Explicación de los encabezados en las columnas
 
-|         Data item     |      Explicación        |
-|----------------------|------------------------|
-|identificador          |Número de referencia generado automáticamente|
-|precio                 |Precio de venta|
-|dia de la transferencia|fecha en que se completó la venta|
-|postcode|Código postal|
-|Typo de propiedad|independiente, piso, etc|
-|Nuevo/viejo|Indica la edad de la propiedad|
-|Duración|Se refiere al tipo de tenencia|
-|PAON|Número de la casa|
-|SAON|Número interior de la casa|
-|Calle|    |
-|Localidad|    |
-|Ciudad|     |
-|Distrito|  |
-|Condado|  |
-|PPD|Indica el tipo de precio pagaso en la transacción|
-|Record/status|Movimientos en los registros |
+|         **Data item**     |      **Descripción**        |   **Tipo**   |
+|:----------------------|:------------------------|:---------------------|
+|_uid_          |Número de referencia generado automáticamente| Texto |
+|_precio_                 |Precio de venta|  numérico|
+|_date_of_transfer_|fecha en que se completó la venta| fecha|
+|_postcode_|Código postal|Texto|
+|_propert_type_|independiente, piso, etc| caracter|
+|_old_new_|Indica la edad de la propiedad|caracter|
+|_duration_|Se refiere al tipo de tenencia|caracter|
+|_PAON_|Número de la casa|Texto |
+|_SAON_|Número interior de la casa|Texto |
+|_street_|Calle    |Texto |
+|_locality_| Localidad |Texto |
+|_town_city_|  Ciudad   |Texto |
+|_district_| Distrito |Texto |
+|_county_| Condado |Texto |
+|_ppd_category_|Indica el tipo de precio pagaso en la transacción|caracter|
+|_record_status_|Movimientos en los registros |caracter|
 
 ### Análisis exploratorio de los datos
 
