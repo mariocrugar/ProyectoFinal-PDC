@@ -33,10 +33,29 @@ Esta base de datos tiene información de **YYYYYYYY**
 |PPD|Indica el tipo de precio pagaso en la transacción|
 |Record/status|Movimientos en los registros |
 
-Hola :)
+### Análisis exploratorio de los datos
 
-![Texto alternativo](docs/boxplot_vars.png)
+Se realizó un breve análisis de datos para tener una mejor idea de qué se puede hacer con ellos. Y conocer qué presentaban
+los datos del presente ejercicio. 
 
+El análisis completo se encuentra en el R Markdown con el EDA. Aquí solamente se expondrán algunos puntos destacables de los
+datos.
 
+Primeramente, se econtraron valores atípicos en la variable *price* que corresponde al precio de las viviendas. Había viviendas que valían una sola libra, hasta algunas que valían varios millones. En la siguiente gráfica se pueden observar 
+las observaciones de los precios y cómo hay valores atípicos. 
 
+![Precio-tiempo](docs/000005.png)
+
+Pero se eliminaron estos errores atípicos y se pudo evitar el sesgo en la visualización y la interpretación de los datos. 
+El histograma de los datos una vez corregidos se ve así.
+
+![Histograma arreglado](docs/00000f.png)
+
+Igualmente, se puede ver cómo están distribuidas las variables con respecto al precio. 
+
+![Box plot de variables](docs/boxplot_vars.png)
+
+Y las variables categóricas cómo se distribuyen respecto al precio también. 
+
+![variables categoricas](docs/000015.png)
 
