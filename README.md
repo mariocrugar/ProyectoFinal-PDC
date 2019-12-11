@@ -71,15 +71,23 @@ las observaciones de los precios y cómo hay valores atípicos.
 ![Precio-tiempo](docs/000005.png)
 
 Pero se eliminaron estos errores atípicos y se pudo evitar el sesgo en la visualización y la interpretación de los datos. 
-El histograma de los datos una vez corregidos se ve así.
+El histograma de los datos una vez corregidos se ve así en comparación de cómo se veía sin la corrección de datos atípicos.
 
-![Histograma arreglado](docs/00000f.png)
+![Histograma arreglado](docs/histo_precio.png)
 
-Igualmente, se puede ver cómo están distribuidas las variables con respecto al precio. 
+Igualmente, se puede ver cómo están distribuidas las variables con respecto al precio. Igual que en la gráfica anterior se puede
+comparar con los preciós sin corrección, no se podía apreciar la verdadera distribución de las variables con los precios.
 
-![Box plot de variables](docs/boxplot_vars.png)
+![Box plot de variables](docs/precio-variables.png)
 
-Y las variables categóricas cómo se distribuyen respecto al precio también. 
+Y las variables categóricas cómo se distribuyen respecto al precio también. Apreciando una mayor varianza de precios para las
+casas nuevas y dentro de la columna *proper_type* la correspondiente a la variable *o*
 
 ![variables categoricas](docs/000015.png)
+
+Por últmio, la comparación de las variables categóricas, para conocer su distribución relativa a las demás. Por ejemplo, qué
+proporción de casas son viejas respecto a las nuevas. 
+
+![variables categoricas](docs/variables_categoricas-precio.png)
+
 
