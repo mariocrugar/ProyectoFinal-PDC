@@ -90,4 +90,98 @@ proporción de casas son viejas respecto a las nuevas.
 
 ![variables categoricas](docs/variables_categoricas-precio.png)
 
+## Creación de usuario y base de datos
+
+Para la realización del proyecto se utilizó un ambiente, para este caso se utilizó *vagrant* debido a que se contaban con todos
+los requerimientos necesarios para el desarrollo como lo es *postgreSQL* o *sqlite*.
+
+Primero, se creo un **ambiente** para el proyecyo. 
+
+Ya dentro de *vagrant* clonando el repositorio del trabajo.
+
+```text
+git clone https://github.com/mariocrugar/ProyectoFinal-PDC.git
+```
+
+Después se crea un ambiente virtual en *python*.
+```text
+pyenv virtualenv 3.7.3 realsuk
+```
+
+```text
+cd ProyectoFinal-PDC
+echo realsuk > .python-version
+```
+
+Se instala poetry.
+```text
+pip install poetry
+poetry install
+```
+
+Ahora, continuamos con la **creación del usuario y base de datos**  en *postgres*.
+```text
+sudo su postgres
+create database realsuk;
+```
+
+Una vez creada la base de datos podemos corroborar que **realsuk** se ha creado exitosamente
+y quien es el propietario de dicha base de datos al igual que los privilegios que este posee.
+```text
+                                  List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+-----------+----------+----------+-------------+-------------+-----------------------
+ berka     | berka    | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ realsuk   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+ turista   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/postgres         +
+           |          |          |             |             | postgres=CTc/postgres+
+           |          |          |             |             | turista=CTc/postgres
+(6 rows)
+```
+
+Continuando, se crea un rol para *realsuk*.
+
+```text
+create role realsuk login;  -- Permisos para que el rol pueda conectarse
+alter role realsuk with encrypted password 'realsuk'; -- se agrega una contraseña al rol
+grant all privileges on database realsuk to realsuk;
+```
+
+Abajo, se pueden ver los roles creados en el ambiente de *vagrant*, ahí se encuentra *realsuk* que
+acaba de ser creado.
+```text
+                                          List of roles
+ Role name |                         Attributes                         | Member of | Description 
+-----------+------------------------------------------------------------+-----------+-------------
+ berka     |                                                            | {}        | 
+ postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}        | 
+ realsuk   |                                                            | {}        | 
+ turista   |                                                            | {}        | 
+```
+
+Para finalizar se prueba la conexión con la base dedatos fuera de *psql* con el siguiente comando:
+```text
+psql -U realsuk -d realsuk -h 0.0.0.0 -W
+```
+
+Aparece el siguiente mensaje de confirmación:
+```text
+Expanded display is used automatically.
+Null display is "¤".
+Line style is unicode.
+Unicode border line style is "single".
+Unicode column line style is "single".
+Unicode header line style is "double".
+SET
+Timing is on.
+psql (11.5 (Ubuntu 11.5-0ubuntu0.19.04.1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type "help" for help.
+```
+
 
