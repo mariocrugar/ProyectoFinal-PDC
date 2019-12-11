@@ -2,7 +2,7 @@ CREATE EXTENSION IF NOT EXISTS dblink;
 
 DO $$
 BEGIN
-PERFORM dblink_exec('', 'CREATE DATABASE proyecto_final WITH OWNER "postgres" ENCODING "UTF8"');
+PERFORM dblink_exec('', 'CREATE DATABASE realsuk WITH OWNER "postgres" ENCODING "UTF8"');
 EXCEPTION WHEN duplicate_database THEN RAISE NOTICE '%, skipping', SQLERRM USING ERRCODE = SQLSTATE;
 END
 $$;
