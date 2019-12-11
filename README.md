@@ -3,13 +3,33 @@
 Repositorio para el proyecto final de la materia **Programación para ciencia de Datos**. Otoño 2019.
 
 
+## Integrantes 
+
++ Mario Alberto 
++ Mario Alberto Cruz García
++ Victor Guardado
+
+
 ## Objetivo del Proyecto 
 
 El presente proyecto tiene como objetivo el poner en práctica los conocimientos aprendidos en la clase de **programación para ciencia de datos**. 
 
+### Requerimientos del proyecto
+
++ Crear un repositorio
++ Crear una estructura de carpetas  para un proyecto en python
++ Escoger una fuente de datos
++ Crear un README.md: Describir la fuente de datos. Describir la entidad, estructura de la base de datos, *pipeline*. Instalación. Ejecución.
++ Cargar la base de datos a raw
++ Crear una versión limpia en *cleaned* 
++ Crear un esquema *semantic*
++ Crear _features_ temporales ligados a la entidad dadas las fechas del evento. Guardarlos en el esquema *features*
+
+
 ## Base de datos
 
-La base de datos que se eligió es la de **Information about price paid data** del gobierno británico.
+La base de datos que se eligió es la de **Information about price paid data** del gobierno británico. Dentro del compilado
+de **Land Registration (UK)**. 
 Esta base de datos tiene información de **YYYYYYYY**
 
 ### Explicación de los encabezados en las columnas
