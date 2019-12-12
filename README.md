@@ -7,7 +7,7 @@ Repositorio para el proyecto final de la materia **Programación para ciencia de
 
 + Mario Alberto Rodríguez Arias 164471
 + Mario Alberto Cruz García 123808
-+ Victor Guardado 13XXXX
++ Victor Guardado 131113
 
 
 ## Objetivo del Proyecto 
