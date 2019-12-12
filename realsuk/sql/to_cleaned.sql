@@ -1,7 +1,7 @@
 create table cleaned.hmlr_prices
 as (
 select
-    uid,
+    btrim(uid) as uid,
     price::decimal,
     substring(date_of_transfer,1,10)::date as date_of_transfer,
     btrim(postcode) as postcode,
