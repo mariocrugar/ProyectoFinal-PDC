@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "Proyecto_Final"
+name = "realsuk"
 version = "1.0.0"
 description = "python environment for real state in the United Kingdom"
 license = "GPL3.0+"
