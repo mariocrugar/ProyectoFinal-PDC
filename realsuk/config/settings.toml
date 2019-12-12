@@ -1,4 +1,4 @@
 [default]
-dburl = 'postgresql://service=proyecto_final'
+dburl = 'postgresql://service=realsuk'
 pgconnstring = 'user=postgres dbname=realsuk port=5432 host=0.0.0.0 password=postgress'
 proyecto_dir = '../data'
